@@ -25,7 +25,7 @@ public class NewAdressPage {
     WebElement cityInput;
 
     @FindBy(id = "field-postalcode")
-    WebElement postalCodeInput;
+    WebElement zipInput;
 
     @FindBy(id = "field-id_country")
     WebElement countryDropDownListToggle;
@@ -43,7 +43,7 @@ public class NewAdressPage {
         aliasInput.sendKeys(alias);
         addressInput.sendKeys(address);
         cityInput.sendKeys(city);
-        postalCodeInput.sendKeys(zip);
+        zipInput.sendKeys(zip);
 
         Select countrySelect = new Select(countryDropDownListToggle);
         countrySelect.selectByVisibleText(country);
