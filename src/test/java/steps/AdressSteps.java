@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -71,7 +72,10 @@ public class AdressSteps {
         Assert.assertTrue("Country not found", addressText.contains(country));
         Assert.assertTrue("Phone not found", addressText.contains(phone));
     }
-
+    @And("The browser closes")
+    public void closeBrowser(){
+        driver.quit();
+    }
 
 }
 

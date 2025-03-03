@@ -24,7 +24,7 @@ public class NewAdressPage {
     @FindBy(id = "field-city")
     WebElement cityInput;
 
-    @FindBy(id = "field-postalcode")
+    @FindBy(id = "field-postcode")
     WebElement zipInput;
 
     @FindBy(id = "field-id_country")
