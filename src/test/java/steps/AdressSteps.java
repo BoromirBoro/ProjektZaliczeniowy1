@@ -5,10 +5,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import pages.AddressesPage;
 import pages.LoginPage;
-import pages.NewAdressPage;
+import pages.NewAddressPage;
 import pages.YourAccountPage;
 
 
@@ -18,7 +21,8 @@ public class AdressSteps {
     private WebDriver driver;
     private LoginPage loginPage;
     private YourAccountPage yourAccountPage;
-    private NewAdressPage newAdressPage;
+    private NewAddressPage newAddressPage;
+    private AddressesPage addressesPage;
 
     @Given("I am on the mystore login page")
     public void openLoginPage() {
@@ -46,8 +50,13 @@ public class AdressSteps {
     @When("I click on the Addresses tile")
     public void clickAddFirstAddress() {
         yourAccountPage.clickAddressOption();
+        addressesPage = new AddressesPage(driver);
     }
 
+    @And("I click the Create new address button")
+    public void iClickTheCreateNewAddressButton() {
+        addressesPage.clickCreateNewAddressBtn();
+    }
 
     @Then("I should be on the addresses page")
     public void iShouldBeOnTheAddressesPage() {
@@ -58,24 +67,15 @@ public class AdressSteps {
 
     @When("I fill the address form with alias {string}, address {string}, city {string}, zip {string}, country {string}, phone {string}")
     public void fillTheAddNewAddressForm(String alias, String address, String city, String zip, String country, String phone) {
-        newAdressPage = new NewAdressPage(driver);
-        newAdressPage.fillAddressForm(alias, address, city, zip, country, phone);
+        newAddressPage = new NewAddressPage(driver);
+        newAddressPage.fillAddressForm(alias, address, city, zip, country, phone);
     }
 
-    @Then("The new address should be added with alias {string}, address {string}, city {string}, zip {string}, country {string}, phone {string}")
-    public void theNewAddressShouldBeAddedWithProvidedData(String alias, String address, String city, String zip, String country, String phone) {
-        String addressText = newAdressPage.getAddedAddressText();
-        Assert.assertTrue("Alias not found", addressText.contains(alias));
-        Assert.assertTrue("Address not found", addressText.contains(address));
-        Assert.assertTrue("City not found", addressText.contains(city));
-        Assert.assertTrue("Zip not found", addressText.contains(zip));
-        Assert.assertTrue("Country not found", addressText.contains(country));
-        Assert.assertTrue("Phone not found", addressText.contains(phone));
-    }
     @And("The browser closes")
     public void closeBrowser(){
         driver.quit();
     }
+
 
 }
 

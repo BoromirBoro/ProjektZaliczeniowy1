@@ -21,4 +21,6 @@ public class AddressesPage {
     public void clickCreateNewAddressBtn(){
         createNewAddressLink.click();
     }
+
+
 }
