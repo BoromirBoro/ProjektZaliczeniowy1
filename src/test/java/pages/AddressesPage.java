@@ -17,4 +17,8 @@ public class AddressesPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    public void clickCreateNewAddressBtn(){
+        createNewAddressLink.click();
+    }
 }
