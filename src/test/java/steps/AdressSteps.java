@@ -45,7 +45,7 @@ public class AdressSteps {
 
     @When("I click on the Addresses tile")
     public void clickAddFirstAddress() {
-        yourAccountPage.clickAddNewAdress();
+        yourAccountPage.clickAddressOption();
     }
 
 
