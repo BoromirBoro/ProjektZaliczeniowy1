@@ -80,4 +80,8 @@ public class NewAddressPage {
         Assert.assertEquals("Country does not match the provided value", country, actualCountry);
         Assert.assertEquals("Phone does not match the provided value", phone, actualPhone);
     }
+
+    public void hitSaveButton(){
+        saveButton.click();
+    }
 }

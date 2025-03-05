@@ -8,7 +8,8 @@ Feature: Managing addresses on mystore-testlab
     And I click the Create new address button
     Then I should be on the addresses page
     When I fill the address form with alias "<alias>", address "<address>", city "<city>", zip "<zip>", country "<country>", phone "<phone>"
-    And the address form data should match the provided values "<alias>", "<address>", "<city>", "<zip>", "<country>", "<phone>"
+    And The address form data should match the provided values "<alias>", "<address>", "<city>", "<zip>", "<country>", "<phone>"
+    And I save the form
     And The browser closes
     Examples:
       | alias | address       | city     | zip    | country        | phone     |

@@ -69,9 +69,14 @@ public class AdressSteps {
         newAddressPage.fillAddressForm(alias, address, city, zip, country, phone);
     }
 
-    @And("the address form data should match the provided values {string}, {string}, {string}, {string}, {string}, {string}")
+    @And("The address form data should match the provided values {string}, {string}, {string}, {string}, {string}, {string}")
     public void verifyAddressFormData(String alias, String address, String city, String zip, String country, String phone) {
         newAddressPage.verifyFormData(alias, address, city, zip, country, phone);
+    }
+
+    @And("I save the form")
+    public void saveTheFormAfterVerification(){
+        newAddressPage.hitSaveButton();
     }
 
     @And("The browser closes")
