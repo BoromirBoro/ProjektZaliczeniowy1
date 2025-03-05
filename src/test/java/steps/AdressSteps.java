@@ -14,7 +14,6 @@ import pages.LoginPage;
 import pages.NewAddressPage;
 import pages.YourAccountPage;
 
-
 import java.time.Duration;
 
 public class AdressSteps {
@@ -46,7 +45,6 @@ public class AdressSteps {
         yourAccountPage = new YourAccountPage(driver);
     }
 
-
     @When("I click on the Addresses tile")
     public void clickAddFirstAddress() {
         yourAccountPage.clickAddressOption();
@@ -56,6 +54,7 @@ public class AdressSteps {
     @And("I click the Create new address button")
     public void iClickTheCreateNewAddressButton() {
         addressesPage.clickCreateNewAddressBtn();
+        newAddressPage = new NewAddressPage(driver);
     }
 
     @Then("I should be on the addresses page")
@@ -67,15 +66,17 @@ public class AdressSteps {
 
     @When("I fill the address form with alias {string}, address {string}, city {string}, zip {string}, country {string}, phone {string}")
     public void fillTheAddNewAddressForm(String alias, String address, String city, String zip, String country, String phone) {
-        newAddressPage = new NewAddressPage(driver);
         newAddressPage.fillAddressForm(alias, address, city, zip, country, phone);
     }
 
-    @And("The browser closes")
-    public void closeBrowser(){
-        driver.quit();
+    @And("the address form data should match the provided values {string}, {string}, {string}, {string}, {string}, {string}")
+    public void verifyAddressFormData(String alias, String address, String city, String zip, String country, String phone) {
+        newAddressPage.verifyFormData(alias, address, city, zip, country, phone);
     }
 
-
+    @And("The browser closes")
+    public void closeBrowser() {
+        driver.quit();
+    }
 }
 
